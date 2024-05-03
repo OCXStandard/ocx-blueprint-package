@@ -1,0 +1,18 @@
+{
+  "full_name": "John Doe",
+  "email": "doe@example.com",
+  "github_username": "OCXStandard",
+  "project_name": "ocx package",
+  "short_project_description": "A python ocx package",
+  "version": "0.1.0",
+  "python_version": "3.10",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-')}}",
+  "package_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+  "__gh_slug": "{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}",
+  "year": "2024",
+  "__docs": "docs",
+  "__tests": "tests",
+  "__conda_environment": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+  "_copy_without_render": [
+       "*.yaml"]
+  }
