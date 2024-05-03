@@ -1,21 +1,13 @@
 # {{ cookiecutter.project_slug }}
-> ### A python CLI project
+> ### A python package
 
-``{{ cookiecutter.app_name }}``: {{ cookiecutter.short_project_description }}
+{{ cookiecutter.short_project_description }}
 
 ## Installation
 
 install from pypi:
 ````commandline
 pip install {{ cookiecutter.package_slug }}
-````
-
-# Usage
-## The main CLI
-
-````commandline
- {{ cookiecutter.app_name }} --help
-
 ````
 
 ## API
