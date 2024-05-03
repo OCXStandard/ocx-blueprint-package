@@ -44,12 +44,9 @@ sphinx_rtd_theme = "*"
 sphinx-click = "*"
 sphinx_automodapi = "*"
 
-[tool.poetry.scripts]
-{{ cookiecutter.__app }} = "{{  cookiecutter.package_slug }}.cli:{{ cookiecutter.__app }}"
-
 [tool.tbump]
 # Uncomment this if your project is hosted on GitHub:
-# github_url = "{{ cookiecutter.__gh_slug }}"
+github_url = "{{ cookiecutter.__gh_slug }}"
 
 [tool.tbump.version]
 current = "{{ cookiecutter.version }}"

@@ -18,5 +18,5 @@ pip install cookiecutter
 Run cookiecutter from a terminal and answer the interactive prompts
 
 ````commandline
-coockiecutter git@github.com:OCXStandard/ocx-blueprint-package.git
+cookiecutter git@github.com:OCXStandard/ocx-blueprint-package.git
 ````
