@@ -25,6 +25,7 @@ loguru = "*"
 [tool.poetry.group.development.dependencies]
 pre-commit = "*"
 sourcery = '*'
+flake8-pyproject ="*"
 
 [tool.poetry.group.test.dependencies]
 pytest = "*"
@@ -37,6 +38,16 @@ sphinx-autodoc-typehints = "*"
 sphinx_rtd_theme = "*"
 sphinx-click = "*"
 sphinx_automodapi = "*"
+
+[tool.flake8]
+# Check that this is aligned with your other tools like Black
+max-line-length = 120
+exclude = [
+    # No need to traverse our git directory
+    ".git",
+    # There's no value in checking cache directories
+    "__pycache__"
+]
 
 [tool.tbump]
 # Uncomment this if your project is hosted on GitHub:
