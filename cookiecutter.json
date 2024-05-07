@@ -2,6 +2,7 @@
   "full_name": "John Doe",
   "email": "doe@example.com",
   "github_username": "OCXStandard",
+  "copyright": "3Docx.org",
   "project_name": "ocx package",
   "short_project_description": "A python ocx package",
   "version": "0.1.0",
