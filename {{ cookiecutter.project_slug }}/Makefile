@@ -48,15 +48,21 @@ poetry-fix:  ## Force pip poetry re-installation
 export:   ## Export the dependencies to docs/requirements.txt
 	@poetry export --with=docs -o ./docs/requirements.txt
 
+publish: ## Publish the dist to pypi
+	@poetry publish  --username=__token__ --password=pypi-<copy token here>
 
 # pre-commit ######################################################################
 pre-commit:	## Run any pre-commit hooks
 	@pre-commit run --all-files
 
-sourcery:  ## Run sourcery with --fix
-# TESTS #######################################################################
-	@sourcery review --fix --no-summary $(SOURCEDIR)
 
+# Testing ######################################################################
+
+ruff-check: ## Run ruff code check
+	@ruff check  --fix $(SOURCEDIR)
+
+ruff-format: ## Run ruff formatter and autofix
+	@ruff format $(SOURCEDIR)
 
 test:  ## Run unit and integration tests
 	@pytest -m "not skip" --durations=5  --cov-report html --cov $(PACKAGE) .

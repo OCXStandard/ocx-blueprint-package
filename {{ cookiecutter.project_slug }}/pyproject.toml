@@ -24,8 +24,7 @@ loguru = "*"
 
 [tool.poetry.group.development.dependencies]
 pre-commit = "*"
-sourcery = '*'
-flake8-pyproject ="*"
+ruff ="*"
 
 [tool.poetry.group.test.dependencies]
 pytest = "*"
@@ -39,15 +38,56 @@ sphinx_rtd_theme = "*"
 sphinx-click = "*"
 sphinx_automodapi = "*"
 
-[tool.flake8]
-# Check that this is aligned with your other tools like Black
-max-line-length = 120
+[tool.ruff]
+# Exclude directories.
 exclude = [
-    # No need to traverse our git directory
-    ".git",
-    # There's no value in checking cache directories
-    "__pycache__"
+    ".github",
+    ".coverage",
+    ".idea",
+    "docs",
+    "htmlcov",
+    "tests",
 ]
+
+[tool.ruff.lint]
+# 1. Enable flake8-bugbear (`B`) rules, in addition to the defaults.
+select = ["E4", "E7", "E9", "F", "B"]
+
+# 2. Avoid enforcing line-length violations (`E501`)
+ignore = ["E501"]
+
+# 3. Avoid trying to fix flake8-bugbear (`B`) violations.
+unfixable = ["B"]
+
+# 4. Ignore `E402` (import violations) in all `__init__.py` files, and in select subdirectories.
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["E402"]
+"**/{tests,docs,tools}/*" = ["E402"]
+
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+
+[tool.ruff.lint.flake8-quotes]
+docstring-quotes = "double"
+
+[tool.ruff.format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+
+# Enable auto-formatting of code examples in docstrings. Markdown,
+# reStructuredText code/literal blocks and doctests are all supported.
+#
+
 
 [tool.tbump]
 # Uncomment this if your project is hosted on GitHub:
