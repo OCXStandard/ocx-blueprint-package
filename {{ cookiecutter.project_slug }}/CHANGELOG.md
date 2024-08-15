@@ -1,4 +1,4 @@
-# ocx-blueprint-package: Changelog
+# {{ cookiecutter.project_slug }}: Changelog
 
 All notable changes to the OCX schema will be documented in this file.
 
@@ -14,23 +14,7 @@ and this project adheres to the Python [PEP 440 versioning recommendations](http
 * ``Security`` in case of vulnerabilities.
 
 
-## [0.2.1] - 2024.08.15
-Bump to 0.2.1
-
-## Changed
-* Add ruff to pre-commit workflow
-
-## [0.2.0] - 2024.08.15
-Bump to 0.2.0
-
-## Changed
-* Use ruff as code linter
-
-## Added
-* Changelog
-
-
-## [0.1.0] - 2024.05.07
+## [0.1.0] - date
 Bump to 0.1.0
 
 ## Added
