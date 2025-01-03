@@ -1,7 +1,7 @@
 # A self-documenting Makefile
 # You can set these variables from the command line, and also
 # from the environment for the first two.
-
+CONDA_YAML = environment.yaml
 SOURCEDIR = ./{{cookiecutter.package_slug}}
 CONDA_ENV = {{cookiecutter.__conda_environment}}
 COVDIR = htmlcov
@@ -12,10 +12,10 @@ NC='\033[0m' # No Color
 
 # PROJECT setup using conda and powershell
 conda-create:  ## Create a new conda environment with the python version and basic development tools as specified in environment.yml
-	@conda env create -f environment.yml
+	@conda env create -f $(CONDA_YAML)
 
 conda-upd:  ## Update the conda development environment when environment.yml has changed
-	@conda env update -f environment.yml
+	@conda env update -f $(CONDA_YAML)
 
 
 conda-clean: ## Purge all conda tarballs, log files and caches

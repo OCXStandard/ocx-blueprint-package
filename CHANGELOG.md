@@ -14,6 +14,12 @@ and this project adheres to the Python [PEP 440 versioning recommendations](http
 * ``Security`` in case of vulnerabilities.
 
 
+## [0.2.2] - 2025.01.03
+Bump to 0.2.2
+
+## Changed
+* Renamed environment.yml to environment.yaml
+
 ## [0.2.1] - 2024.08.15
 Bump to 0.2.1
 
