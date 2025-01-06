@@ -7,17 +7,19 @@
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.poetry]
+[project]
 name = "{{ cookiecutter.package_slug }}"
 version = "{{ cookiecutter.version }}"
 description = "{{ cookiecutter.short_project_description }}"
-authors = ["{{ cookiecutter.full_name }} <{{ cookiecutter.email }}>"]
+authors = [
+    {name="{{ cookiecutter.full_name }}", email= "{{ cookiecutter.email }}"}
+]
 readme = "README.md"
 packages = [{include = "{{ cookiecutter.package_slug }}"}]
 
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter.python_version }}"
-packaging = "^23.1"
+packaging = "*"
 tbump = '*'
 loguru = "*"
 
