@@ -21,4 +21,4 @@ Run cookiecutter from a terminal and answer the interactive prompts
 cookiecutter git@github.com:OCXStandard/ocx-blueprint-package.git
 ````
 
-# Version: 0.2.2
+# Version: 0.2.3
