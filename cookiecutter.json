@@ -6,7 +6,7 @@
   "project_name": "ocx package",
   "short_project_description": "A python ocx package",
   "version": "0.1.0",
-  "python_version": "3.11",
+  "python_version": "3.9",
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-')}}",
   "package_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
   "__gh_slug": "{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}",

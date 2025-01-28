@@ -15,8 +15,9 @@ and this project adheres to the Python [PEP 440 versioning recommendations](http
 
 
 
-## [0.2.3]
 
+
+## [0.2.3]
 Bump to version 0.2.3
 
 ### Changed

@@ -1,21 +1,18 @@
 [project.urls]
-"Homepage" = "{{ cookiecutter.__gh_slug }}"
-"Bug Tracker" = "{{ cookiecutter.__gh_slug }}/issues"
+"Homepage" = "https://{{ cookiecutter.__gh_slug }}"
+"Bug Tracker" = "https://{{ cookiecutter.__gh_slug }}/issues"
 
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-[project]
+[tool.poetry]
 name = "{{ cookiecutter.package_slug }}"
 version = "{{ cookiecutter.version }}"
 description = "{{ cookiecutter.short_project_description }}"
-authors = [
-    {name="{{ cookiecutter.full_name }}", email= "{{ cookiecutter.email }}"}
-]
+authors = ["Ole Christian Astrup <ole.christian.astrup@dnv.com>"]
 readme = "README.md"
-packages = [{include = "{{ cookiecutter.package_slug }}"}]
 
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter.python_version }}"

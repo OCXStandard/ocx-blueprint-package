@@ -1,4 +1,36 @@
 # Blueprint Makefile
+# A self-documenting Makefile
+# You can set these variables from the command line, and also
+# from the environment for the first two.
+
+CONDA_ENV = ocx-blueprint-package
+CONDA_YAML = environment.yaml
+# PS replacements for sh
+RM = 'del -Confirmed False'
+
+# CONDA TASKS ##################################################################
+# PROJECT setup using conda and powershell
+.PHONY: conda-create
+conda-create:  ## Create a new conda environment with the python version and basic development tools
+	@conda env create -f $(CONDA_YAML)
+	@conda activate $(CONDA_ENV)
+cc: conda-create
+.PHONY: cc
+conda-upd: environment.yaml## Update the conda development environment when environment.yaml has changed
+	@conda env update -f $(CONDA_YAML)
+cu: conda-upd
+.PHONY:cu
+
+
+conda-activate: ## Activate the conda environment for the project
+	@conda activate $(CONDA_ENV)
+ca: conda-activate
+.PHONY: ca
+
+conda-clean: ## Purge all conda tarballs, log files and caches
+	conda clean -a -y
+.Phony: conda-clean
+
 
 # Color output
 BLUE='\033[0;34m'
