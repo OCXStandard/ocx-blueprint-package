@@ -14,6 +14,13 @@ and this project adheres to the Python [PEP 440 versioning recommendations](http
 * ``Security`` in case of vulnerabilities.
 
 
+## [1.0.0] - 2025.01.03
+Bump to 1.0.0
+
+## Changed
+* Changed from Poetry package manager to uv from Astral
+
+
 ## [0.2.2] - 2025.01.03
 Bump to 0.2.2
 

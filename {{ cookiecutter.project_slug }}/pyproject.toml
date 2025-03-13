@@ -1,41 +1,51 @@
+[project]
+name = "{{ cookiecutter.package_slug }}"
+version = "{{ cookiecutter.version }}"
+description = "{{ cookiecutter.short_project_description }}"
+authors = [
+     { name = "{{full_name}}", email = "{{email}}" }
+]
+readme = "README.md"
+requires-python = ">={{python_version}}"
+dependencies = [
+ ]
+
+[dependency-groups]
+dev = [
+    "packaging>=23.2",
+    "pre-commit>=4.1.0",
+    "pytest-cov>=6.0.0",
+    "pytest-regressions>=2.7.0",
+    "responses>=0.25.6",
+    "setuptools>=75.8.0",
+
+]
+docs = [
+    "sphinx>=7.4.7",
+    "sphinx>=7.4.7",
+    "sphinx-autodoc-typehints>=2.3.0",
+    "sphinx-automodapi>=0.18.0",
+    "sphinx-click>=6.0.0",
+    "sphinx-rtd-theme>=3.0.2",
+]
 [project.urls]
 "Homepage" = "https://{{ cookiecutter.__gh_slug }}"
 "Bug Tracker" = "https://{{ cookiecutter.__gh_slug }}/issues"
 
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
-[tool.poetry]
-name = "{{ cookiecutter.package_slug }}"
-version = "{{ cookiecutter.version }}"
-description = "{{ cookiecutter.short_project_description }}"
-authors = ["Ole Christian Astrup <ole.christian.astrup@dnv.com>"]
-readme = "README.md"
+[tool.pytest.ini_options]
+markers = [
+    "production: marks tests as slow (deselect with '-m \"not production\"')",
+    "commit: run on every commit",
+]
+addopts = "-ra -q"
+testpaths = [
+    "tests",]
 
-[tool.poetry.dependencies]
-python = "^{{ cookiecutter.python_version }}"
-packaging = "*"
-tbump = '*'
-loguru = "*"
-
-
-[tool.poetry.group.development.dependencies]
-pre-commit = "*"
-ruff ="*"
-
-[tool.poetry.group.test.dependencies]
-pytest = "*"
-pytest-cov = "*"
-pytest-regressions ="*"
-
-[tool.poetry.group.docs.dependencies]
-sphinx = "*"
-sphinx-autodoc-typehints = "*"
-sphinx_rtd_theme = "*"
-sphinx-click = "*"
-sphinx_automodapi = "*"
 
 [tool.ruff]
 # Exclude directories.

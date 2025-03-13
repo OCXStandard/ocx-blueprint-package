@@ -1,76 +1,57 @@
 # A self-documenting Makefile
 # You can set these variables from the command line, and also
 # from the environment for the first two.
-CONDA_YAML = environment.yaml
+
 SOURCEDIR = ./{{cookiecutter.package_slug}}
-CONDA_ENV = {{cookiecutter.__conda_environment}}
-COVDIR = htmlcov
+
 # Color output
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 
-# PROJECT setup using conda and powershell
-conda-create:  ## Create a new conda environment with the python version and basic development tools as specified in environment.yml
-	@conda env create -f $(CONDA_YAML)
+# PROJECT SETUP ##############################################################
+install-tools: ## Install the uv toolbox
+	@uv tool install ruff
+	@uv tool install tbump
+	@iv tool install pre-commit
 
-conda-upd:  ## Update the conda development environment when environment.yml has changed
-	@conda env update -f $(CONDA_YAML)
+it: install-tools
+
+init: ## Initiate the project using uv. Install all dependencies in the virtual environment and activate it
+	@uv sync
+
+ps-venv:  ## Activate the virtual environment for powershell terminal
+	@powershell -NoProfile -ExecutionPolicy Bypass -Command "& { . .venv/Scripts/activate.ps1 }"
+	@powershell -NoProfile -ExecutionPolicy Bypass -Command "Write-Host 'Activated virtual environment' -ForegroundColor Blue"
+av: ps-venv
 
 
-conda-clean: ## Purge all conda tarballs, log files and caches
-	conda clean -a -y
-
-conda-activate: ## Activate the conda environment for the project
-	@conda activate $(CONDA_ENV)
-
-
-
-doc-serve: ## Open the the html docs built by Sphinx
-	@cmd /c start "_build/index.html"
-
-ds: doc-serve
-
-doc: ## Build the html docs using Sphinx. For other Sphinx options, run make in the docs folder
-	@sphinx-build docs _build
+# DOCUMENTATION ##############################################################
+doc-build: ## Build the html docs using Sphinx. For other Sphinx options, run make in the docs folder
+	@uv run sphinx-build docs _build
 
 doc-links: ## Check the internal and external links after building the documentation
-	@sphinx-build docs -W -b linkcheck -d _build/doctrees _build/html
+	@uv run sphinx-build docs -W -b linkcheck -d _build/doctrees _build/html
+PHONY: doc-links
 
-# POETRY ########################################################################
-build:   ## Build the package dist with poetry
-	@poetry update
-	@poetry build
-
-poetry-fix:  ## Force pip poetry re-installation
-	@pip install poetry --upgrade
-
-export:   ## Export the dependencies to docs/requirements.txt
-	@poetry export --with=docs -o ./docs/requirements.txt
-
+doc-export: ## Export the requirements to docs/requirements.txt
+	@uv export --no-hashes --group docs -o docs/requirements.txt
 
 # pre-commit ######################################################################
-pre-commit:	## Run any pre-commit hooks
-	@pre-commit run --all-files
+pre-commit:	## Run the pre-commit hooks
+	@uv run pre-commit run --all-files
 
-
-# Testing ######################################################################
-
-ruff-check: ## Run ruff code check
-	@ruff check  --fix $(SOURCEDIR)
-
-ruff-format: ## Run ruff formatter and autofix
-	@ruff format $(SOURCEDIR)
-
+# TESTS #######################################################################
 test:  ## Run unit and integration tests
-	@pytest -m "not skip" --durations=5  --cov-report html --cov $(PACKAGE) .
+	@uv run pytest --log-disable=test --durations=5  --cov-report html --cov=$(SOURCEDIR)
 
-test-upd:  ## Run unit and integration tests
-	@pytest --force-regen --durations=5  --cov-report html --cov $(PACKAGE) .
+test-upd:  ## Run unit and integration tests and force update baselines
+	@uv run pytest --force-regen --durations=5  --cov-report html --cov=$(SOURCEDIR)
 
 
 test-cov:  ## View the test coverage report
 	cmd /c start $(CURDIR)/htmlcov/index.html
+
 
 .PHONY: help
 help: ## Show this help
