@@ -15,16 +15,8 @@ and this project adheres to the Python [PEP 440 versioning recommendations](http
 
 
 
-
-
-## [0.2.3]
-Bump to version 0.2.3
-
-### Changed
-* Updated pyproject.toml section [projects]
-
-## [0.1.0] - date
-Bump to 0.1.0
+## [{{ cookiecutter.version}}] - {% now 'utc', '%Y-%m-%d' %}
+Bump to {{ cookiecutter.version }}
 
 ## Added
 * Initial commit

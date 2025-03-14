@@ -13,7 +13,7 @@ NC='\033[0m' # No Color
 install-tools: ## Install the uv toolbox
 	@uv tool install ruff
 	@uv tool install tbump
-	@iv tool install pre-commit
+	@uv tool install pre-commit
 
 it: install-tools
 
