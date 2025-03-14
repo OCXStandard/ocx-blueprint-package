@@ -14,36 +14,15 @@ repos:
     hooks:
       # Run the linter.
       - id: ruff
+        args: [ --fix, --show-fixes]
       # Run the formatter.
       - id: ruff-format
   - repo: local
     hooks:
       - id: pytest
         name: Run pytest
-        entry: pytest -m commit
+        entry: uv run pytest --log-disable=test --durations=5  -m commit
         language: system
         types: [python]
         always_run: true
         pass_filenames: false
-      - id: poetry-check
-        name: poetry-check
-        description: run poetry check to validate config
-        entry: poetry check
-        language: python
-        pass_filenames: false
-        files: ^(.*/)?(poetry\.lock|pyproject\.toml)$
-      - id: poetry-lock
-        name: poetry-lock
-        description: run poetry lock to update lock file
-        entry: poetry lock
-        language: python
-        pass_filenames: false
-        files: ^(.*/)?(poetry\.lock|pyproject\.toml)$
-      - id: poetry-export
-        name: poetry-export
-        description: run poetry export to sync lock file with requirements.txt
-        entry: poetry export --without-hashes --with docs -o ./docs/requirements.txt
-        language: python
-        language_version: python3
-        pass_filenames: false
-        files: ^(.*/)?poetry\.lock$

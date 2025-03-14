@@ -3,10 +3,10 @@ name = "{{ cookiecutter.package_slug }}"
 version = "{{ cookiecutter.version }}"
 description = "{{ cookiecutter.short_project_description }}"
 authors = [
-     { name = "{{full_name}}", email = "{{email}}" }
+     { name = "{{ cookiecutter.full_name }}", email = "{{ cookiecutter.email }}" }
 ]
 readme = "README.md"
-requires-python = ">={{python_version}}"
+requires-python = ">={{cookiecutter.python_version}}"
 dependencies = [
  ]
 

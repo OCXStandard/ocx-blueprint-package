@@ -15,6 +15,13 @@ and this project adheres to the Python [PEP 440 versioning recommendations](http
 
 
 ## [1.0.0] - 2025.01.03
+
+# Changed
+
+* Fixed missing cookicutter variables in pyproject.toml
+* Removed poetry hook from .pre-commit-config.yaml
+
+## [1.0.0] - 2025.01.03
 Bump to 1.0.0
 
 ## Changed

@@ -10,10 +10,9 @@
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-')}}",
   "package_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
   "__gh_slug": "{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}",
-  "year": "2024",
+  "year": "{% now 'utc', '%Y' %}",
   "__docs": "docs",
   "__tests": "tests",
-  "__conda_environment": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
   "_copy_without_render": [
        "*.yaml"]
   }
