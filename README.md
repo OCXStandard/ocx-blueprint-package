@@ -1,5 +1,5 @@
 # ocx-blueprint-package
-## Version: 1.1.0
+## Version: 1.1.1
 ### A cookiecutter template for easily setting up a development environment for an OCX Python package
 
 The cookiecutter blueprint will create  a Python project for a distributable python module.
